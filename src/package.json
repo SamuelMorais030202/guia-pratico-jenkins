@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "echo 'Build OK - aplicação pronta para deploy'"
   },
   "repository": {
     "type": "git",

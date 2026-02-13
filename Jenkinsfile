@@ -4,20 +4,38 @@ pipeline {
     stages {
         stage('install') {
             steps {
-                echo 'Hello World'
+                dir('src') {
+                    sh 'npm install'
+                }
             }
         }
 
         stage('tests') {
             steps {
-                echo 'Running tests'
+                dir('src') {
+                    sh 'npm test'
+                }
             }
         }
 
         stage('build') {
             steps {
-                echo 'Deploying application'
+                dir('src') {
+                    sh 'npm run build'
+                }
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline executado com sucesso!'
+        }
+        failure {
+            echo 'Pipeline falhou. Verifique os logs para mais detalhes.'
+        }
+        always {
+            echo 'Pipeline finalizado.'
         }
     }
 }
