@@ -12,7 +12,7 @@ router.put('/stress/tempo/:tempoStress/intervalo/:intervalo/ciclos/:ciclos', (re
 
     const elemento = 'cpu';
     const tempoStress = req.params.tempoStress * 1000;
-    const tempoFolga = req.params.tempoFolga * 1000;
+    const tempoFolga = req.params.intervalo * 1000;
     const ciclos = req.params.ciclos;
     new NodeHog(elemento, tempoStress, tempoFolga, ciclos).start();
     res.send("OK");

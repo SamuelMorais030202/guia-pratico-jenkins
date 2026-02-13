@@ -46,6 +46,10 @@ app.post('/', (req, res) => {
     res.render('index', {valorConvertido: resultado, "maquina": os.hostname()});
  });
 
-app.listen(8080, () => {
-    console.log("Servidor rodando na porta 8080");
-});
+if (require.main === module) {
+    app.listen(8080, () => {
+        console.log("Servidor rodando na porta 8080");
+    });
+}
+
+module.exports = app;
